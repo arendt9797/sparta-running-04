@@ -13,7 +13,14 @@
  * @returns {string[]}
  */
 
-function filterUserTodos(userTodos, userId, priority) {}
+import { copyAndReplace } from "jest-html-reporters/helper"
+
+function filterUserTodos(userTodos, userId, priority) {
+    return userTodos.map((todo) => {
+        if ((todo.userId === userId) && (todo.priority === priority) && (!todo.completed))
+            return todo.title
+    }).filter((title) => title !== undefined)
+}
 
 // export 수정 불가
 export { filterUserTodos };
